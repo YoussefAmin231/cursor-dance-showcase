@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -84,7 +83,7 @@ const Hero = () => {
         <motion.div 
           className="wavy-bg absolute bottom-0 left-0 right-0 h-72 opacity-10"
           style={{
-            backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIyMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiMwMDAwZmYiPjxwYXRoIGQ9Ik0wIDB2MTQwaDEyODBWMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNMCAwbDY0MCA3MCA2NDAtNzB2MTQwSDB6IiBmaWxsLW9wYWNpdHk9Ii41Ii8+PHBhdGggZD0iTTAgMGw2NDAgNzAgNjQwLTcwdjE0MEgweiIvPjwvZz48L3N2Zz4=')",
+            backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIyMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmc+PGcgZmlsbD0iIzAwMDBmZiI+PHBhdGggZD0iTTAgMHYxNDBoMTI4MFYweiIgZmlsbC1vcGFjaXR5PSIuNSIvPjxwYXRoIGQ9Ik0wIDBsNjQwIDcwIDY0MC03MHYxNDBIMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNMCAwbDY0MCA3MCA2NDAtNzB2MTQwSDB6Ii8+PC9nPjwvc3ZnPg==')",
             backgroundSize: "100% 100%"
           }}
           animate={{
@@ -179,7 +178,7 @@ const Hero = () => {
                     repeatType: "loop" 
                   }}
                 >
-                  ✨
+                  
                 </motion.div>
               </motion.div>
               
@@ -203,7 +202,7 @@ const Hero = () => {
                     delay: 1
                   }}
                 >
-                  💻
+                  
                 </motion.div>
               </motion.div>
             </div>
