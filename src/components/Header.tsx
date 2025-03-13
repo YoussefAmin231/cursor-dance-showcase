@@ -1,6 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
+import { Mail, Phone, Github } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,9 +28,9 @@ const Header = () => {
       )}
     >
       <div className="container flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tight">
+        <Link to="/" className="text-xl font-bold tracking-tight">
           Youssef<span className="text-primary">.</span>
-        </a>
+        </Link>
         
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#about" className="text-sm font-medium hover:text-primary transition-colors link-hover">
@@ -42,12 +44,26 @@ const Header = () => {
           </a>
         </nav>
         
-        <a 
-          href="#contact" 
-          className="px-4 py-2 text-sm font-medium rounded-md border border-primary/20 hover:bg-primary/5 transition-colors"
-        >
-          Get in Touch
-        </a>
+        <div className="flex items-center space-x-4">
+          <div className="hidden sm:flex items-center space-x-3 mr-2">
+            <a href="mailto:youssef@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+              <Mail size={18} />
+            </a>
+            <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
+              <Phone size={18} />
+            </a>
+            <a href="https://github.com/youssefyasser" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <Github size={18} />
+            </a>
+          </div>
+          
+          <Link 
+            to="/contact" 
+            className="px-4 py-2 text-sm font-medium rounded-md border border-primary/20 hover:bg-primary/5 transition-colors"
+          >
+            Get in Touch
+          </Link>
+        </div>
       </div>
     </header>
   );
