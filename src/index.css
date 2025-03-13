@@ -51,6 +51,7 @@
 }
 
 @layer utilities {
+  /* Cursor effects */
   .cursor-dot {
     @apply fixed top-0 left-0 w-6 h-6 pointer-events-none z-50 rounded-full backdrop-blur-sm opacity-70 transition-all duration-300 ease-out;
     transform: translate(-50%, -50%);
@@ -66,6 +67,7 @@
     transform: translate(-50%, -50%) scale(0.5);
   }
 
+  /* Text utilities */
   .text-balance {
     text-wrap: balance;
   }
@@ -74,6 +76,7 @@
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
   }
   
+  /* Hero section */
   .hero-glow {
     @apply relative;
   }
@@ -83,10 +86,20 @@
     @apply absolute w-full h-full bg-primary/5 blur-3xl -z-10 rounded-full scale-150 opacity-70;
   }
   
+  /* Glassmorphism */
+  .glassmorphism {
+    @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-lg;
+    box-shadow: 
+      0 4px 30px rgba(0, 0, 0, 0.1),
+      inset 0 0 1px 1px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  }
+  
   .glass-card {
     @apply rounded-xl bg-white bg-opacity-95 backdrop-blur-lg border border-white/20 shadow-sm hover:shadow-md transition-all duration-300;
   }
   
+  /* Shared components */
   .project-card {
     @apply glass-card p-5 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
   }
@@ -99,6 +112,7 @@
     @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100;
   }
   
+  /* Animations */
   .animated-blur-circle {
     @apply absolute rounded-full opacity-70 blur-3xl;
     animation: float 15s ease-in-out infinite alternate;
@@ -135,11 +149,61 @@
     animation: gradient-shift 8s linear infinite;
   }
   
-  .glassmorphism {
+  /* 3D effects */
+  .perspective-container {
+    perspective: 1000px;
+  }
+  
+  .tilt-card {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+  
+  /* Glow effects */
+  .glow-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .glow-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  
+  .glow-button:hover::after {
+    opacity: 1;
+  }
+  
+  .glass-button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-button:hover {
     background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  }
+  
+  /* Reveal animations for sections */
+  .reveal-sections > section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .reveal-sections > section.in-view {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -167,6 +231,7 @@
   }
 }
 
+/* Page transitions */
 .page-transitions-enter {
   opacity: 0;
   transform: translateY(20px);
@@ -189,7 +254,19 @@
   transition: opacity 600ms, transform 600ms;
 }
 
-/* Hide native scrollbar */
+/* Scrolling animations */
+@keyframes appear-from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -206,3 +283,46 @@
 ::selection {
   @apply bg-primary/20 text-foreground;
 }
+
+/* Add scroll-based reveal behavior */
+.reveal-sections > section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Style for the wavy background */
+.wavy-bg {
+  animation: wave 15s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-25px) translateY(10px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Add initialization script for scroll reveal */
+document.addEventListener('DOMContentLoaded', function() {
+  const revealOnScroll = function() {
+    const sections = document.querySelectorAll('.reveal-sections > section');
+    
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      
+      if (sectionTop < windowHeight * 0.85) {
+        section.classList.add('in-view');
+      }
+    });
+  };
+  
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // Check on initial load
+});
