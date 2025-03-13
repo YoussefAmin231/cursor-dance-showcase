@@ -1,7 +1,7 @@
 
 import React from 'react';
 import SectionHeader from './SectionHeader';
-import ProjectCard from './ProjectCard';
+import { motion } from 'framer-motion';
 
 const projectsData = [
   {
@@ -44,7 +44,7 @@ const projectsData = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-secondary/30">
+    <section id="projects" className="py-20 bg-gradient-to-b from-white to-secondary/10">
       <div className="container">
         <SectionHeader
           subtitle="Portfolio"
@@ -52,20 +52,37 @@ const Projects = () => {
           description="A showcase of my recent work in mobile application development and UI/UX design."
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-col gap-16 mt-12">
           {projectsData.map((project, index) => (
-            <div 
-              key={index} 
-              className="opacity-0 animate-slide-in" 
-              style={{ animationDelay: `${0.2 + index * 0.1}s` }}
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className={`relative w-full overflow-hidden group ${index % 2 === 0 ? '' : 'md:ml-auto'}`}
             >
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                tags={project.tags}
-                image={project.image}
-              />
-            </div>
+              <div className="w-full relative mb-6 overflow-hidden rounded-xl">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-[300px] md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              
+              <div className={`max-w-2xl ${index % 2 === 0 ? '' : 'md:ml-auto text-right'}`}>
+                <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-muted-foreground mb-4">{project.description}</p>
+                <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? '' : 'md:justify-end'}`}>
+                  {project.tags.map((tag, tagIndex) => (
+                    <span key={tagIndex} className="chip text-xs">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

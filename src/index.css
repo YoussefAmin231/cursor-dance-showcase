@@ -92,7 +92,7 @@
   }
   
   .chip {
-    @apply px-3 py-1 text-xs rounded-full bg-primary/10 text-primary-foreground border border-primary/20 font-medium;
+    @apply px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20 font-medium;
   }
   
   .link-hover {
@@ -102,6 +102,68 @@
   .animated-blur-circle {
     @apply absolute rounded-full opacity-70 blur-3xl;
     animation: float 15s ease-in-out infinite alternate;
+  }
+  
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .zigzag-line {
+    position: relative;
+  }
+  
+  .zigzag-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(45deg, transparent 33.333%, rgba(0, 0, 0, 0.05) 33.333%, rgba(0, 0, 0, 0.05) 66.667%, transparent 66.667%),
+                linear-gradient(-45deg, transparent 33.333%, rgba(0, 0, 0, 0.05) 33.333%, rgba(0, 0, 0, 0.05) 66.667%, transparent 66.667%);
+    background-size: 16px 16px;
+  }
+  
+  .animated-gradient-text {
+    background: linear-gradient(to right, #3B82F6, #8B5CF6, #3B82F6);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 8s linear infinite;
+  }
+  
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%; 
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
