@@ -1,7 +1,7 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 
 const FloatingShape = ({ delay, duration, x, y, size, color, blur }: any) => (
@@ -63,7 +63,7 @@ const Hero = () => {
       } as React.CSSProperties}
     >
       {/* Animated Background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white to-blue-50">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-blue-50 to-indigo-50">
         {/* Particles effect */}
         <div className="particles absolute inset-0">
           {Array.from({ length: 15 }).map((_, i) => (
@@ -103,68 +103,170 @@ const Hero = () => {
         className="container relative z-10"
         style={{ y, opacity }}
       >
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto"
-        >
-          {/* Glassmorphic Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left side with images and shapes */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="glassmorphism p-12 rounded-3xl text-center relative overflow-hidden"
-            whileHover={{ boxShadow: "0 20px 50px rgba(0, 0, 0, 0.1)" }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative hidden lg:block"
           >
-            {/* Card inner glow */}
-            <div className="absolute -inset-px bg-gradient-to-tr from-primary/20 via-transparent to-primary/10 opacity-50 rounded-3xl" />
-            
+            <div className="relative aspect-square max-w-md mx-auto">
+              {/* Abstract shapes */}
+              <motion.div 
+                className="absolute -top-10 -left-10 w-64 h-64 rounded-full bg-gradient-to-r from-primary/20 to-purple-400/20 blur-xl"
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                  rotate: [0, 5, 0],
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity,
+                  repeatType: "mirror" 
+                }}
+              />
+              
+              <motion.div 
+                className="absolute -bottom-10 -right-10 w-72 h-72 rounded-full bg-gradient-to-l from-blue-400/20 to-primary/20 blur-xl"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [0, -5, 0],
+                }}
+                transition={{ 
+                  duration: 10, 
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  delay: 1
+                }}
+              />
+              
+              {/* Main circular frame */}
+              <motion.div 
+                className="absolute inset-4 rounded-full overflow-hidden border-4 border-white/30 shadow-xl glassmorphism"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-purple-400/20 z-10" />
+                <motion.div
+                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=2048')] bg-cover bg-center"
+                  animate={{
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    repeatType: "mirror"
+                  }}
+                />
+              </motion.div>
+              
+              {/* 3D floating elements */}
+              <motion.div 
+                className="absolute top-1/4 -right-6 w-24 h-24 perspective-container"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <motion.div 
+                  className="w-full h-full bg-gradient-to-tr from-primary/30 to-purple-300/30 rounded-2xl glassmorphism tilt-card flex items-center justify-center text-4xl"
+                  animate={{ 
+                    rotateX: [0, 10, 0, -10, 0], 
+                    rotateY: [0, 15, 0, -15, 0],
+                    rotateZ: [0, 5, 0, -5, 0],
+                  }}
+                  transition={{ 
+                    duration: 10, 
+                    repeat: Infinity,
+                    repeatType: "loop" 
+                  }}
+                >
+                  ✨
+                </motion.div>
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -bottom-2 -left-6 w-16 h-16 perspective-container"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+              >
+                <motion.div 
+                  className="w-full h-full bg-gradient-to-bl from-blue-400/30 to-primary/30 rounded-lg glassmorphism tilt-card flex items-center justify-center text-2xl"
+                  animate={{ 
+                    rotateX: [0, -10, 0, 10, 0], 
+                    rotateY: [0, -15, 0, 15, 0],
+                    rotateZ: [0, -5, 0, 5, 0],
+                  }}
+                  transition={{ 
+                    duration: 8, 
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    delay: 1
+                  }}
+                >
+                  💻
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
+          
+          {/* Right side with content */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6 lg:text-left text-center"
+          >
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="chip mb-6 inline-block"
+              className="chip mb-2 inline-block"
             >
               Computer Engineer & UI/UX Designer
             </motion.p>
             
-            <motion.h1 
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 hero-glow animated-gradient-text"
+              className="space-y-3"
             >
-              Youssef Yasser
-            </motion.h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight hero-glow">
+                Hi, I am <span className="animated-gradient-text">Youssef Yasser</span>
+              </h1>
+              
+              <div className="h-14 text-lg md:text-xl text-muted-foreground">
+                <TypeAnimation
+                  sequence={[
+                    'Building exceptional digital experiences',
+                    1000,
+                    'Crafting intuitive UI/UX designs',
+                    1000,
+                    'Developing mobile applications',
+                    1000,
+                  ]}
+                  wrapper="div"
+                  speed={50}
+                  repeat={Infinity}
+                  className="min-h-[3.5rem] flex items-center lg:justify-start justify-center"
+                />
+              </div>
+            </motion.div>
             
-            <motion.div
+            <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-lg text-muted-foreground mb-8 h-14"
+              className="text-muted-foreground max-w-lg mx-auto lg:mx-0"
             >
-              <TypeAnimation
-                sequence={[
-                  'Building exceptional digital experiences',
-                  1000,
-                  'Crafting intuitive UI/UX designs',
-                  1000,
-                  'Developing mobile applications',
-                  1000,
-                ]}
-                wrapper="div"
-                speed={50}
-                repeat={Infinity}
-                className="min-h-[3.5rem] flex items-center justify-center"
-              />
-            </motion.div>
+              Passionate about creating beautiful and functional digital experiences that solve real-world problems.
+            </motion.p>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex justify-center gap-4"
+              className="flex lg:justify-start justify-center gap-4 pt-4"
             >
               <motion.a 
                 whileHover={{ 
@@ -190,7 +292,7 @@ const Hero = () => {
               </motion.a>
             </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </motion.div>
       
       <motion.div 
@@ -213,27 +315,6 @@ const Hero = () => {
           <ChevronDown size={20} />
         </motion.a>
       </motion.div>
-      
-      {/* 3D tilting element */}
-      <div className="absolute bottom-10 right-10 perspective-container hidden lg:block">
-        <motion.div 
-          className="w-32 h-32 bg-gradient-to-tr from-primary/30 to-purple-300/30 rounded-2xl glassmorphism tilt-card"
-          animate={{ 
-            rotateX: [0, 10, 0, -10, 0], 
-            rotateY: [0, 15, 0, -15, 0],
-            rotateZ: [0, 5, 0, -5, 0],
-          }}
-          transition={{ 
-            duration: 10, 
-            repeat: Infinity,
-            repeatType: "loop" 
-          }}
-        >
-          <div className="w-full h-full flex items-center justify-center text-4xl">
-            ✨
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 };
