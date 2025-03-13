@@ -25,14 +25,14 @@ const Index = () => {
       <CursorEffect />
       
       {isLoading ? (
-        <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
           <div className="relative">
             <div className="w-12 h-12 border-2 border-primary rounded-full animate-pulse"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-background rounded-full"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full"></div>
           </div>
         </div>
       ) : (
-        <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <main className="min-h-screen bg-white text-foreground overflow-x-hidden">
           <Header />
           <Hero />
           <About />

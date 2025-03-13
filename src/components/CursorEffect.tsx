@@ -6,6 +6,27 @@ const CursorEffect = () => {
   const [hidden, setHidden] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
+  const [cursorColor, setCursorColor] = useState("#8B5CF6"); // Default color: purple
+
+  // Array of vibrant colors for the cursor
+  const colors = [
+    "#8B5CF6", // Vivid Purple
+    "#D946EF", // Magenta Pink
+    "#F97316", // Bright Orange
+    "#0EA5E9", // Ocean Blue
+    "#10B981", // Emerald Green
+    "#EF4444", // Red
+  ];
+
+  // Change color periodically
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      setCursorColor(randomColor);
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     const updateCursorPosition = (e: MouseEvent) => {
@@ -67,10 +88,22 @@ const CursorEffect = () => {
       <div
         className={`cursor-dot ${hidden ? "opacity-0" : "opacity-70"} ${
           clicked ? "scale-75" : ""
-        } ${linkHovered ? "scale-150 bg-primary/20" : ""}`}
+        } ${linkHovered ? "scale-150 opacity-60" : ""}`}
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
+          backgroundColor: cursorColor,
+          boxShadow: `0 0 15px ${cursorColor}`,
+          transition: "background-color 1s ease-in-out, transform 0.3s ease-out, opacity 0.3s ease-out",
+        }}
+      />
+      <div
+        className={`cursor-trail ${hidden ? "opacity-0" : "opacity-30"}`}
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          backgroundColor: cursorColor,
+          boxShadow: `0 0 20px ${cursorColor}`,
         }}
       />
       <div
@@ -80,7 +113,8 @@ const CursorEffect = () => {
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
-          transitionDuration: linkHovered ? "0.2s" : "0.5s"
+          borderColor: cursorColor,
+          transitionDuration: linkHovered ? "0.2s" : "0.5s",
         }}
       />
     </>

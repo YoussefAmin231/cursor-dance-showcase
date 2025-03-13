@@ -41,7 +41,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-white text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
@@ -52,13 +52,18 @@
 
 @layer utilities {
   .cursor-dot {
-    @apply fixed top-0 left-0 w-6 h-6 pointer-events-none z-50 rounded-full backdrop-blur-sm bg-black/5 opacity-70 transition-all duration-300 ease-out border border-black/10;
+    @apply fixed top-0 left-0 w-6 h-6 pointer-events-none z-50 rounded-full backdrop-blur-sm opacity-70 transition-all duration-300 ease-out;
     transform: translate(-50%, -50%);
   }
 
   .cursor-outline {
-    @apply fixed top-0 left-0 w-10 h-10 pointer-events-none z-40 rounded-full border border-black/10 opacity-50 transition-all duration-500 ease-out;
+    @apply fixed top-0 left-0 w-10 h-10 pointer-events-none z-40 rounded-full border-2 opacity-50 transition-all duration-500 ease-out;
     transform: translate(-50%, -50%);
+  }
+
+  .cursor-trail {
+    @apply fixed top-0 left-0 w-24 h-24 pointer-events-none z-30 rounded-full blur-2xl opacity-20 transition-all duration-700 ease-out;
+    transform: translate(-50%, -50%) scale(0.5);
   }
 
   .text-balance {
@@ -79,7 +84,7 @@
   }
   
   .glass-card {
-    @apply rounded-xl bg-white bg-opacity-70 backdrop-blur-lg border border-white/20 shadow-sm hover:shadow-md transition-all duration-300;
+    @apply rounded-xl bg-white bg-opacity-95 backdrop-blur-lg border border-white/20 shadow-sm hover:shadow-md transition-all duration-300;
   }
   
   .project-card {
