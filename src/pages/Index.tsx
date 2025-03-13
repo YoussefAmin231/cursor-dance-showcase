@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -9,6 +8,7 @@ import Footer from '@/components/Footer';
 import CursorEffect from '@/components/CursorEffect';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
+import { initScrollReveal } from '@/utils/scrollReveal';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,9 +37,13 @@ const Index = () => {
 
     window.addEventListener('scroll', handleScroll);
     
+    // Initialize scroll reveal when component mounts
+    const cleanup = initScrollReveal();
+    
     return () => {
       clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
+      cleanup(); // Clean up scroll reveal event listener
     };
   }, []);
 

@@ -307,22 +307,3 @@
     transform: translateX(0) translateY(0);
   }
 }
-
-/* Add initialization script for scroll reveal */
-document.addEventListener('DOMContentLoaded', function() {
-  const revealOnScroll = function() {
-    const sections = document.querySelectorAll('.reveal-sections > section');
-    
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      
-      if (sectionTop < windowHeight * 0.85) {
-        section.classList.add('in-view');
-      }
-    });
-  };
-  
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // Check on initial load
-});
