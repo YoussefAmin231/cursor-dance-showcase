@@ -62,7 +62,7 @@ const Projects = () => {
     <section 
       id="projects" 
       ref={ref} 
-      className="py-20 relative"
+      className="py-20 relative scroll-mt-20"
     >
       {/* Animated background gradient */}
       <motion.div 
@@ -77,69 +77,51 @@ const Projects = () => {
           description="A showcase of my recent work in mobile application development and UI/UX design."
         />
         
-        <div className="flex flex-col gap-20 mt-16">
-          {projectsData.map((project, index) => {
-            const isEven = index % 2 === 0;
-            
-            return (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="group"
-              >
-                <Link to={`/project/${project.id}`} className="block">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-                    {/* Image section - switches sides based on index */}
-                    <motion.div 
-                      className={`order-1 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="relative overflow-hidden rounded-xl shadow-xl shadow-black/5">
-                        {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        
-                        {/* Project image */}
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-[300px] md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                    </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+          {projectsData.map((project, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              whileHover={{ y: -10 }}
+              className="group"
+            >
+              <Link to={`/project/${project.id}`} className="block h-full">
+                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
+                  <div className="relative overflow-hidden h-48">
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-end">
+                      <h3 className="text-white font-semibold text-xl p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{project.title}</h3>
+                    </div>
                     
-                    {/* Content section */}
-                    <div className={`order-2 ${isEven ? 'lg:order-2' : 'lg:order-1'} ${isEven ? '' : 'lg:text-right'}`}>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        viewport={{ once: true }}
-                      >
-                        <h3 className="text-2xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">{project.title}</h3>
-                        
-                        <p className="text-muted-foreground mb-5">{project.description}</p>
-                        
-                        <div className={`flex flex-wrap gap-2 ${isEven ? '' : 'lg:justify-end'}`}>
-                          {project.tags.map((tag, tagIndex) => (
-                            <span 
-                              key={tagIndex} 
-                              className="chip text-xs"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
+                    {/* Project image */}
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  
+                  <div className="p-4">
+                    <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <span 
+                          key={tagIndex} 
+                          className="chip text-xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

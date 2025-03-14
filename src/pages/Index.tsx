@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -113,8 +114,11 @@ const Index = () => {
             <Hero />
             
             <div className="reveal-sections">
-              <About />
+              {/* Projects section first, About section only accessible via nav */}
               <Projects />
+              <div id="about" className="scroll-mt-20">
+                <About />
+              </div>
               <Contact />
               <Footer />
             </div>

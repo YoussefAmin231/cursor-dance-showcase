@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Mail, Phone, Github } from 'lucide-react';
+import { Mail, Phone, Github, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
@@ -33,11 +33,15 @@ const Header = () => {
         </Link>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#about" className="text-sm font-medium hover:text-primary transition-colors link-hover">
-            About
+          <a href="#" className="text-sm font-medium hover:text-primary transition-colors link-hover flex items-center gap-1">
+            <Home size={16} />
+            Home
           </a>
           <a href="#projects" className="text-sm font-medium hover:text-primary transition-colors link-hover">
             Projects
+          </a>
+          <a href="#about" className="text-sm font-medium hover:text-primary transition-colors link-hover">
+            About
           </a>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors link-hover">
             Contact
