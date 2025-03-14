@@ -140,7 +140,7 @@ const Hero = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-purple-400/20 z-10" />
                 <motion.div
-                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d')] bg-cover bg-center"
+                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586717791821-3f44a563fa4c')] bg-cover bg-center"
                   animate={{
                     scale: [1, 1.05, 1]
                   }}
@@ -171,7 +171,7 @@ const Hero = () => {
                     repeatType: "loop" 
                   }}
                 >
-                  📱
+                  
                 </motion.div>
               </motion.div>
               
@@ -195,31 +195,7 @@ const Hero = () => {
                     delay: 1
                   }}
                 >
-                  📊
-                </motion.div>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute top-3/4 right-1/2 w-20 h-20 perspective-container"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-              >
-                <motion.div 
-                  className="w-full h-full bg-gradient-to-tr from-purple-400/30 to-indigo-300/30 rounded-xl glassmorphism tilt-card flex items-center justify-center text-3xl"
-                  animate={{ 
-                    rotateX: [0, 12, 0, -12, 0], 
-                    rotateY: [0, 18, 0, -18, 0],
-                    rotateZ: [0, 7, 0, -7, 0],
-                  }}
-                  transition={{ 
-                    duration: 9, 
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    delay: 1.5
-                  }}
-                >
-                  👨‍💻
+                  
                 </motion.div>
               </motion.div>
             </div>
@@ -290,7 +266,7 @@ const Hero = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
                 href="#projects"
-                className="glow-button px-6 py-3 rounded-md bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium transition-all"
+                className="glow-button px-6 py-3 rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium transition-all"
               >
                 View Projects
               </motion.a>
