@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -83,7 +84,7 @@ const Hero = () => {
         <motion.div 
           className="wavy-bg absolute bottom-0 left-0 right-0 h-72 opacity-10"
           style={{
-            backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIyMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmc+PGcgZmlsbD0iIzAwMDBmZiI+PHBhdGggZD0iTTAgMHYxNDBoMTI4MFYweiIgZmlsbC1vcGFjaXR5PSIuNSIvPjxwYXRoIGQ9Ik0wIDBsNjQwIDcwIDY0MC03MHYxNDBIMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNMCAwbDY0MCA3MCA2NDAtNzB2MTQwSDB6Ii8+PC9nPjwvc3ZnPg==')",
+            backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIyMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiMwMDAwZmYiPjxwYXRoIGQ9Ik0wIDB2MTQwaDEyODBWMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNMCAwbDY0MCA3MCA2NDAtNzB2MTQwSDB6IiBmaWxsLW9wYWNpdHk9Ii41Ii8+PHBhdGggZD0iTTAgMGw2NDAgNzAgNjQwLTcwdjE0MEgweiIvPjwvZz48L3N2Zz4=')",
             backgroundSize: "100% 100%"
           }}
           animate={{
@@ -146,7 +147,7 @@ const Hero = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-purple-400/20 z-10" />
                 <motion.div
-                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=2048')] bg-cover bg-center"
+                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475')] bg-cover bg-center"
                   animate={{
                     scale: [1, 1.05, 1]
                   }}
@@ -319,3 +320,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
