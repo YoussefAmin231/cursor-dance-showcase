@@ -85,7 +85,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="group relative overflow-hidden rounded-lg aspect-video"
+              className="group relative overflow-hidden rounded-lg aspect-square"
             >
               <Link to={`/project/${project.id}`} className="block h-full">
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
