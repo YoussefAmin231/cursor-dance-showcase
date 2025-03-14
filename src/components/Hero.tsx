@@ -61,9 +61,7 @@ const Hero = () => {
         '--mouse-y': '0.5',
       } as React.CSSProperties}
     >
-      {/* Animated Background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-blue-50 to-indigo-50">
-        {/* Particles effect */}
         <div className="particles absolute inset-0">
           {Array.from({ length: 15 }).map((_, i) => (
             <FloatingShape 
@@ -79,7 +77,6 @@ const Hero = () => {
           ))}
         </div>
         
-        {/* Wave animation */}
         <motion.div 
           className="wavy-bg absolute bottom-0 left-0 right-0 h-72 opacity-10"
           style={{
@@ -103,7 +100,6 @@ const Hero = () => {
         style={{ y, opacity }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Left side with images and shapes */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -111,7 +107,6 @@ const Hero = () => {
             className="relative hidden lg:block"
           >
             <div className="relative aspect-square max-w-md mx-auto">
-              {/* Abstract shapes */}
               <motion.div 
                 className="absolute -top-10 -left-10 w-64 h-64 rounded-full bg-gradient-to-r from-primary/20 to-purple-400/20 blur-xl"
                 animate={{ 
@@ -139,14 +134,13 @@ const Hero = () => {
                 }}
               />
               
-              {/* Main circular frame */}
               <motion.div 
                 className="absolute inset-4 rounded-full overflow-hidden border-4 border-white/30 shadow-xl glassmorphism"
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-purple-400/20 z-10" />
                 <motion.div
-                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d')] bg-cover bg-center"
+                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586717791821-3f44a563fa4c')] bg-cover bg-center"
                   animate={{
                     scale: [1, 1.05, 1]
                   }}
@@ -158,7 +152,6 @@ const Hero = () => {
                 />
               </motion.div>
               
-              {/* 3D floating elements */}
               <motion.div 
                 className="absolute top-1/4 -right-6 w-24 h-24 perspective-container"
                 initial={{ opacity: 0 }}
@@ -208,7 +201,6 @@ const Hero = () => {
             </div>
           </motion.div>
           
-          {/* Right side with content */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -270,11 +262,11 @@ const Hero = () => {
               <motion.a 
                 whileHover={{ 
                   scale: 1.05, 
-                  boxShadow: "0px 0px 20px rgba(79, 70, 229, 0.4)"
+                  boxShadow: "0px 0px 20px rgba(139, 92, 246, 0.5)"
                 }}
                 whileTap={{ scale: 0.98 }}
                 href="#projects"
-                className="glow-button px-6 py-3 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                className="glow-button px-6 py-3 rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium transition-all"
               >
                 View Projects
               </motion.a>
@@ -307,7 +299,7 @@ const Hero = () => {
             repeat: Infinity,
             repeatType: "loop" 
           }}
-          href="#about" 
+          href="#projects" 
           className="flex flex-col items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           <span className="mb-2">Scroll</span>

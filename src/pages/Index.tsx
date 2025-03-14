@@ -10,10 +10,13 @@ import CursorEffect from '@/components/CursorEffect';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { initScrollReveal } from '@/utils/scrollReveal';
+import { useLocation } from 'react-router-dom';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const location = useLocation();
+  const { hash } = location;
   
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -47,6 +50,19 @@ const Index = () => {
       cleanup(); // Clean up scroll reveal event listener
     };
   }, []);
+
+  // Handle smooth scrolling when hash changes
+  useEffect(() => {
+    if (hash) {
+      // Wait a bit for DOM to be ready
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [hash]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -114,11 +130,16 @@ const Index = () => {
             <Hero />
             
             <div className="reveal-sections">
-              {/* Projects section first, About section only accessible via nav */}
+              {/* Projects section first */}
               <Projects />
-              <div id="about" className="scroll-mt-20">
-                <About />
-              </div>
+              
+              {/* About section only visible when navigated to via navbar */}
+              {hash === '#about' && (
+                <div id="about" className="scroll-mt-20">
+                  <About />
+                </div>
+              )}
+              
               <Contact />
               <Footer />
             </div>

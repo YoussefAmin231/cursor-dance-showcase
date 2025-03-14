@@ -85,40 +85,19 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ y: -10 }}
-              className="group"
+              className="group relative overflow-hidden rounded-lg aspect-video"
             >
               <Link to={`/project/${project.id}`} className="block h-full">
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
-                  <div className="relative overflow-hidden h-48">
-                    {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-end">
-                      <h3 className="text-white font-semibold text-xl p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{project.title}</h3>
-                    </div>
-                    
-                    {/* Project image */}
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  
-                  <div className="p-4">
-                    <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, tagIndex) => (
-                        <span 
-                          key={tagIndex} 
-                          className="chip text-xs"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
+                  <h3 className="text-white font-semibold text-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 text-center px-4">{project.title}</h3>
                 </div>
+                
+                {/* Project image */}
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
               </Link>
             </motion.div>
           ))}
