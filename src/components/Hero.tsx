@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -147,7 +146,7 @@ const Hero = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-purple-400/20 z-10" />
                 <motion.div
-                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475')] bg-cover bg-center"
+                  className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d')] bg-cover bg-center"
                   animate={{
                     scale: [1, 1.05, 1]
                   }}
@@ -320,4 +319,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
