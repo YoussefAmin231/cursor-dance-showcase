@@ -154,7 +154,7 @@ const Index = () => {
                   exit={{ opacity: 0, scale: 0.8 }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex items-center justify-center shadow-lg z-40"
+                  className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg z-40"
                 >
                   <ArrowUp size={20} />
                 </motion.button>
