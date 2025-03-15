@@ -73,7 +73,7 @@ const Projects = () => {
       <div className="container">
         <SectionHeader
           subtitle="Portfolio"
-          title="Recent Projects"
+          title="My Projects"
           description="A showcase of my recent work in mobile application development and UI/UX design."
         />
         
