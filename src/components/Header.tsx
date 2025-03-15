@@ -50,23 +50,23 @@ const Header = () => {
         
         <div className="flex items-center space-x-4">
           <div className="hidden sm:flex items-center space-x-3 mr-2">
-            <a href="mailto:youssef@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="mailto:youssef.job21@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
               <Mail size={18} />
             </a>
             <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
               <Phone size={18} />
             </a>
-            <a href="https://github.com/youssefyasser" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="https://github.com/YoussefAmin2312" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
               <Github size={18} />
             </a>
           </div>
           
-          <Link 
-            to="/contact" 
-            className="px-4 py-2 text-sm font-medium rounded-md border border-primary/20 hover:bg-primary/5 transition-colors"
+          <a 
+            href="#contact"
+            className="px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-purple-200 hover:bg-gradient-to-r hover:from-indigo-500/20 hover:to-purple-500/20 transition-colors text-purple-700"
           >
             Get in Touch
-          </Link>
+          </a>
         </div>
       </div>
     </header>

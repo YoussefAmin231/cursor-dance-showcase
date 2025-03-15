@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -266,7 +267,7 @@ const Hero = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
                 href="#projects"
-                className="glow-button px-6 py-3 rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium transition-all"
+                className="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-400 text-white font-medium transition-all shadow-md hover:shadow-lg"
               >
                 View Projects
               </motion.a>
@@ -277,7 +278,7 @@ const Hero = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
                 href="#contact"
-                className="glass-button px-6 py-3 rounded-md border border-input font-medium hover:bg-secondary transition-colors"
+                className="px-6 py-3 rounded-full border border-purple-300 bg-white/80 backdrop-blur-sm text-purple-700 font-medium hover:bg-purple-50 transition-colors shadow-sm"
               >
                 Contact Me
               </motion.a>
